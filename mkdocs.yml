@@ -1,0 +1,36 @@
+site_name: Polareum Docs
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - content.code.copy
+
+plugins:
+  - i18n:
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: fa
+          name: فارسی (ایران)
+        - locale: tr
+          name: Türkçe
+        - locale: es
+          name: Español
+        - locale: ru
+          name: русский
+        - locale: ja
+          name: 日本語
+        - locale: zh
+          name: 中文
+        - locale: fr
+          name: Français
+        - locale: it
+          name: Italiano
+        - locale: ar
+          name: العربية
+        - locale: de
+          name: Deutsch
+        - locale: ko
+          name: 한국어
