@@ -8,4 +8,4 @@ Designed for builders, trusted by institutions — Polareum powers the future of
 
 ---
 
-📂 **[Explore Wallet-as-a-Service (WaaS) API Documentation »](./waas/)**
+📂 **[Explore Wallet-as-a-Service (WaaS) API Documentation »](./waas/index.md)**
