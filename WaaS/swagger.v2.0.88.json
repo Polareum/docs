@@ -1,10 +1,221 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "Polareum.Waas.Server",
     "version": "1.0"
   },
   "paths": {
+    "/api/basic-info/version": {
+      "get": {
+        "tags": [
+          "BasicInformation"
+        ],
+        "summary": "Retrieves the version of the current server",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic-info/blockchains": {
+      "get": {
+        "tags": [
+          "BasicInformation"
+        ],
+        "summary": "Lists available blockchains",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/BlockchainType"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockchainDtoPagedResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic-info/networks": {
+      "get": {
+        "tags": [
+          "BasicInformation"
+        ],
+        "summary": "lists available networks",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Blockchain",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BlockchainType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/BlockchainType"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkDtoPagedResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic-info/tokens": {
+      "get": {
+        "tags": [
+          "BasicInformation"
+        ],
+        "summary": "lists available tokens",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BlockchainName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NetworkName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenDtoPagedResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/cardano/balance": {
       "get": {
         "tags": [
@@ -2244,54 +2455,6 @@
         }
       }
     },
-    "/api/tokens": {
-      "get": {
-        "tags": [
-          "Tokens"
-        ],
-        "summary": "Returns all Tokens configured inside the system",
-        "parameters": [
-          {
-            "name": "X-API-Key",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TokenDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TokenDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TokenDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/ton/balance": {
       "get": {
         "tags": [
@@ -4255,8 +4418,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4305,8 +4467,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4355,8 +4516,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4405,8 +4565,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4455,8 +4614,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4469,7 +4627,7 @@
         "tags": [
           "Wallets"
         ],
-        "summary": "Devie Wallet from current existing wallet id request",
+        "summary": "Derive Wallet from current existing wallet id request",
         "parameters": [
           {
             "name": "X-API-Key",
@@ -4480,7 +4638,6 @@
           }
         ],
         "requestBody": {
-          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -4505,8 +4662,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
                 }
               }
             }
@@ -4530,7 +4686,6 @@
           }
         ],
         "requestBody": {
-          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -4555,8 +4710,80 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "uuid"
+                  "$ref": "#/components/schemas/CreatedWalletInfoDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/wallets": {
+      "get": {
+        "tags": [
+          "Wallets"
+        ],
+        "summary": "Lists wallets for the user",
+        "parameters": [
+          {
+            "name": "X-API-Key",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BlockchainRef",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NetworkRef",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Label",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletDtoPagedResult"
                 }
               }
             }
@@ -4673,6 +4900,60 @@
         },
         "additionalProperties": false
       },
+      "BlockchainDto": {
+        "required": [
+          "id",
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/BlockchainType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BlockchainDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "totalItemsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BlockchainDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BlockchainType": {
+        "enum": [
+          "Evm",
+          "Utxo",
+          "Tron",
+          "Solana",
+          "Stellar",
+          "Polkadot",
+          "Ripple",
+          "Doge",
+          "Ton",
+          "Cardano"
+        ],
+        "type": "string"
+      },
       "CallValueInfo": {
         "type": "object",
         "properties": {
@@ -4734,6 +5015,33 @@
           },
           "keyExportable": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatedWalletInfoDto": {
+        "required": [
+          "network",
+          "publicAddress",
+          "publicKeyHex"
+        ],
+        "type": "object",
+        "properties": {
+          "walletId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "publicAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicKeyHex": {
+            "type": "string",
+            "nullable": true
+          },
+          "network": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5502,6 +5810,54 @@
         "type": "object",
         "additionalProperties": false
       },
+      "NetworkDto": {
+        "required": [
+          "bitcoinChainType",
+          "blockchain",
+          "blockchainType",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockchain": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockchainType": {
+            "$ref": "#/components/schemas/BlockchainType"
+          },
+          "bitcoinChainType": {
+            "$ref": "#/components/schemas/UtxoChainType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NetworkDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "totalItemsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NetworkDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OperationResponsePageLink": {
         "type": "object",
         "properties": {
@@ -5938,6 +6294,13 @@
         "additionalProperties": false
       },
       "TokenDto": {
+        "required": [
+          "address",
+          "blockchainName",
+          "id",
+          "name",
+          "networkName"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -5958,6 +6321,23 @@
           },
           "blockchainName": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "totalItemsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TokenDto"
+            },
             "nullable": true
           }
         },
@@ -6652,6 +7032,14 @@
         },
         "additionalProperties": false
       },
+      "UtxoChainType": {
+        "enum": [
+          "MainNet",
+          "TestNet",
+          "RegTest"
+        ],
+        "type": "string"
+      },
       "Utxo_InjectAddressRequest": {
         "type": "object",
         "properties": {
@@ -6762,6 +7150,45 @@
           "confirmations": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "network": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WalletDtoPagedResult": {
+        "type": "object",
+        "properties": {
+          "totalItemsCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WalletDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

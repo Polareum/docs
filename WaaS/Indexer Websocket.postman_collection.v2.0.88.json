@@ -1,0 +1,988 @@
+{
+	"info": {
+		"_postman_id": "c8bceef9-349c-4997-ab6e-153bbb0a8239",
+		"name": "Indexer Websocket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38896408"
+	},
+	"item": [
+		{
+			"name": "Evm",
+			"item": [
+				{
+					"name": "Get Address Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n    getAddressTransfers(\r\n    nativeFromAddresses: [],\r\n    nativeToAddresses: [\"0x4675C7e5BaAFBFFbca748158bEcBA61ef3b0a263\"],\r\n    tokenFromAddresses: [],\r\n    tokenToAddresses: [\"0x4dd91D9C5023af14bA65D2B77277335Bc133Ca5c\"],\r\n  )\r\n    {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    parentBlockHash\r\n    tokenTransfers {\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n      contractAddress\r\n    }\r\n    nativeTransfers {\r\n      timestamp\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookEvm}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookEvm}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "2:20:20"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n    getAddressTransfers(\r\n    nativeFromAddresses: [],\r\n    nativeToAddresses: [\"0x4675C7e5BaAFBFFbca748158bEcBA61ef3b0a263\"],\r\n    tokenFromAddresses: [],\r\n    tokenToAddresses: [\"0x4dd91D9C5023af14bA65D2B77277335Bc133Ca5c\"],\r\n  )\r\n    {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    parentBlockHash\r\n    tokenTransfers {\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n      contractAddress\r\n    }\r\n    nativeTransfers {\r\n      timestamp\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+										"variables": ""
+									},
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostWebsocket}}/evm/webhooks/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebsocket}}"
+									],
+									"path": [
+										"evm",
+										"webhooks",
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "2:20:20"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Apr 2025 14:04:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "6807a1eb041513249ae78256"
+						}
+					]
+				},
+				{
+					"name": "Get Latest Block",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n    latestBlock\r\n    {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    parentBlockHash\r\n    tokenTransfers {\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n      contractAddress\r\n    }\r\n    nativeTransfers {\r\n      timestamp\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookEvm}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookEvm}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "0:00:30"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "\r\nquery Query {\r\n    latestBlock\r\n    {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    parentBlockHash\r\n    tokenTransfers {\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n      contractAddress\r\n    }\r\n    nativeTransfers {\r\n      timestamp\r\n      amount\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebsocket}}/evm/webhooks/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebsocket}}"
+									],
+									"path": [
+										"evm",
+										"webhooks",
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "0:00:30"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 22 Apr 2025 14:11:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "6807a382193ef440d77b35dc"
+						}
+					]
+				},
+				{
+					"name": "Unregister account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookEvm}}/unregister?id=6807a1eb041513249ae78256",
+							"host": [
+								"{{hostWebhookEvm}}"
+							],
+							"path": [
+								"unregister"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6807a1eb041513249ae78256"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Polkadot",
+			"item": [
+				{
+					"name": "Get Address Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n    getAddressTransfers(\r\n    fromAddresses: [\"1qnJN7FViy3HZaxZK9tGAA71zxHSBeUweirKqCaox4t8GT7\"],\r\n    toAddresses: [\"\"]\r\n  )\r\n    {\r\n        blockHash\r\n        blockNumber\r\n        timestamp\r\n        transfers {\r\n        extrinsicHash\r\n        module\r\n        function\r\n        isFinalized\r\n        blockNumber\r\n        fromAddress\r\n        toAddress\r\n        amount\r\n        fee\r\n        tip\r\n        events {\r\n            module\r\n            function\r\n            extrinsicHash\r\n            extrinsicIdx\r\n            blockNumber\r\n            isTransferEvent\r\n            attributes\r\n        }\r\n        }\r\n        nonTransferExtrinsics {\r\n        extrinsicHash\r\n        module\r\n        function\r\n        isFinalized\r\n        blockNumber\r\n        events {\r\n            module\r\n            function\r\n            extrinsicHash\r\n            extrinsicIdx\r\n            blockNumber\r\n            isTransferEvent\r\n            attributes\r\n        }\r\n        }\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookPolkadot}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookPolkadot}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "2:20:20"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n    getAddressTransfers(\r\n    fromAddresses: [\"\"],\r\n    toAddresses: [\"1zuN779yp5Z8KawWrcFdw9oa1zdvVrJzuUM6zQoTbcxpv1p\"]\r\n  )\r\n    {\r\n        blockHash\r\n        blockNumber\r\n        timestamp\r\n        transfers {\r\n        extrinsicHash\r\n        module\r\n        function\r\n        isFinalized\r\n        blockNumber\r\n        fromAddress\r\n        toAddress\r\n        amount\r\n        fee\r\n        tip\r\n        events {\r\n            module\r\n            function\r\n            extrinsicHash\r\n            extrinsicIdx\r\n            blockNumber\r\n            isTransferEvent\r\n            attributes\r\n        }\r\n        }\r\n    }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebhookPolkadot}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebhookPolkadot}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "2:20:20"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Apr 2025 11:16:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "680cc083b3152fbffdd1e47b"
+						}
+					]
+				},
+				{
+					"name": "Get Latest Block",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n  latestBlock {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    transfers {\r\n      extrinsicHash\r\n      module\r\n      function\r\n      isFinalized\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      amount\r\n      fee\r\n      tip\r\n      events {\r\n        module\r\n        function\r\n        extrinsicHash\r\n        extrinsicIdx\r\n        blockNumber\r\n        isTransferEvent\r\n        attributes\r\n      }\r\n    }\r\n    nonTransferExtrinsics {\r\n      extrinsicHash\r\n      module\r\n      function\r\n      isFinalized\r\n      blockNumber\r\n      events {\r\n        module\r\n        function\r\n        extrinsicHash\r\n        extrinsicIdx\r\n        blockNumber\r\n        isTransferEvent\r\n        attributes\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookPolkadot}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookPolkadot}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "0:00:30"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{apiKeyEvmWebhook}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n  latestBlock {\r\n    blockHash\r\n    blockNumber\r\n    timestamp\r\n    transfers {\r\n      extrinsicHash\r\n      module\r\n      function\r\n      isFinalized\r\n      blockNumber\r\n      fromAddress\r\n      toAddress\r\n      amount\r\n      fee\r\n      tip\r\n      events {\r\n        module\r\n        function\r\n        extrinsicHash\r\n        extrinsicIdx\r\n        blockNumber\r\n        isTransferEvent\r\n        attributes\r\n      }\r\n    }\r\n    nonTransferExtrinsics {\r\n      extrinsicHash\r\n      module\r\n      function\r\n      isFinalized\r\n      blockNumber\r\n      events {\r\n        module\r\n        function\r\n        extrinsicHash\r\n        extrinsicIdx\r\n        blockNumber\r\n        isTransferEvent\r\n        attributes\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebhookPolkadot}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebhookPolkadot}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "0:00:30"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Apr 2025 10:12:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "680cb19795401370faa64e68"
+						}
+					]
+				},
+				{
+					"name": "Unregister account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookPolkadot}}/unregister?id=680cb58e3c04d6b0d1274bea",
+							"host": [
+								"{{hostWebhookPolkadot}}"
+							],
+							"path": [
+								"unregister"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "680cb58e3c04d6b0d1274bea"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solana",
+			"item": [
+				{
+					"name": "Get Address Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n    getAddressTransfers(\r\n    nativeFromAddresses: [],\r\n    nativeToAddresses: [\"0x4675C7e5BaAFBFFbca748158bEcBA61ef3b0a263\"],\r\n    tokenFromAddresses: [],\r\n    tokenToAddresses: [\"0x4dd91D9C5023af14bA65D2B77277335Bc133Ca5c\"],\r\n  )\r\n   {\r\n    blockHash\r\n    blockHeight\r\n    blockTime\r\n    parentSlot\r\n    previousBlockHash\r\n    slot\r\n    tokenTransfers {\r\n      account\r\n      action\r\n      amount\r\n      authority\r\n      err\r\n      fee\r\n      fromAddress\r\n      mint\r\n      owner\r\n      program\r\n      programId\r\n      rentSysvar\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n      decimal\r\n    }\r\n    nativeTransfers {\r\n      action\r\n      amount\r\n      err\r\n      fee\r\n      fromAddress\r\n      programId\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookSolana}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookSolana}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "2:20:20"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n    getAddressTransfers(\r\n    nativeFromAddresses: [\"APhyMCpYjQ9RdEBn8cs4ifyBXjxAS5JtM3wYpWMJjsY5\"],\r\n    nativeToAddresses: [],\r\n    tokenFromAddresses: [],\r\n    tokenToAddresses: [],\r\n  )\r\n   {\r\n    blockHash\r\n    blockHeight\r\n    blockTime\r\n    parentSlot\r\n    previousBlockHash\r\n    slot\r\n    tokenTransfers {\r\n      account\r\n      action\r\n      amount\r\n      authority\r\n      err\r\n      fee\r\n      fromAddress\r\n      mint\r\n      owner\r\n      program\r\n      programId\r\n      rentSysvar\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n      decimal\r\n    }\r\n    nativeTransfers {\r\n      action\r\n      amount\r\n      err\r\n      fee\r\n      fromAddress\r\n      programId\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebhookSolana}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebhookSolana}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "2:20:20"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Apr 2025 11:43:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "680cc6d53105240f223506e5"
+						}
+					]
+				},
+				{
+					"name": "Get Latest Block",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n  latestBlock {\r\n    blockHash\r\n    blockHeight\r\n    blockTime\r\n    parentSlot\r\n    previousBlockHash\r\n    slot\r\n    tokenTransfers {\r\n      account\r\n      action\r\n      amount\r\n      authority\r\n      err\r\n      fee\r\n      fromAddress\r\n      mint\r\n      owner\r\n      program\r\n      programId\r\n      rentSysvar\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n      decimal\r\n    }\r\n    nativeTransfers {\r\n      action\r\n      amount\r\n      err\r\n      fee\r\n      fromAddress\r\n      programId\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookSolana}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookSolana}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "0:00:30"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{apiKeyEvmWebhook}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n  latestBlock {\r\n    blockHash\r\n    blockHeight\r\n    blockTime\r\n    parentSlot\r\n    previousBlockHash\r\n    slot\r\n    tokenTransfers {\r\n      account\r\n      action\r\n      amount\r\n      authority\r\n      err\r\n      fee\r\n      fromAddress\r\n      mint\r\n      owner\r\n      program\r\n      programId\r\n      rentSysvar\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n      decimal\r\n    }\r\n    nativeTransfers {\r\n      action\r\n      amount\r\n      err\r\n      fee\r\n      fromAddress\r\n      programId\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}\r\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebhookSolana}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebhookSolana}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "0:00:30"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Apr 2025 11:30:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "680cc3e77776a4f43c78dd17"
+						}
+					]
+				},
+				{
+					"name": "Unregister account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookSolana}}/unregister?id=680cb58e3c04d6b0d1274bea",
+							"host": [
+								"{{hostWebhookSolana}}"
+							],
+							"path": [
+								"unregister"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "680cb58e3c04d6b0d1274bea"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stellar",
+			"item": [
+				{
+					"name": "Get Address Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n    getAddressTransfers(\r\n    nativeFromAddresses: [],\r\n    nativeToAddresses: [\"0x4675C7e5BaAFBFFbca748158bEcBA61ef3b0a263\"],\r\n    tokenFromAddresses: [],\r\n    tokenToAddresses: [\"0x4dd91D9C5023af14bA65D2B77277335Bc133Ca5c\"],\r\n  )\r\n   {\r\n    blockHash\r\n    blockHeight\r\n    blockTime\r\n    parentSlot\r\n    previousBlockHash\r\n    slot\r\n    tokenTransfers {\r\n      account\r\n      action\r\n      amount\r\n      authority\r\n      err\r\n      fee\r\n      fromAddress\r\n      mint\r\n      owner\r\n      program\r\n      programId\r\n      rentSysvar\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n      decimal\r\n    }\r\n    nativeTransfers {\r\n      action\r\n      amount\r\n      err\r\n      fee\r\n      fromAddress\r\n      programId\r\n      signatures\r\n      slot\r\n      status\r\n      toAddress\r\n      transactionHash\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookSolana}}/register?expiryTimeSpan=2:20:20&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookSolana}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "2:20:20"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Latest Block",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Query {\r\n  latestLedger {\r\n    ledgerSequence\r\n    ledgerHash\r\n    successfulTransactionCount\r\n    failedTransactionCount\r\n    operationCount\r\n    previousHash\r\n    timestamp\r\n    transactions {\r\n      ledgerSequence\r\n      sourceAddress\r\n      transactionHash\r\n      memo\r\n      fee\r\n      isSuccessful\r\n      sourceAccountSequence\r\n      timestamp\r\n      operations {\r\n        ledgerSequence\r\n        sourceAddress\r\n        destinationAddress\r\n        transactionHash\r\n        amount\r\n        timestamp\r\n        fee\r\n        assetType\r\n        assetTypeIssuer\r\n        createdAccount\r\n        startingBalance\r\n        type\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookStellar}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+							"host": [
+								"{{hostWebhookStellar}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "expiryTimeSpan",
+									"value": "0:00:30"
+								},
+								{
+									"key": "webhookAddress",
+									"value": "https://postman-echo.com/post"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{apiKeyEvmWebhook}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query Query {\r\n  latestLedger {\r\n    ledgerSequence\r\n    ledgerHash\r\n    successfulTransactionCount\r\n    failedTransactionCount\r\n    operationCount\r\n    previousHash\r\n    timestamp\r\n  }\r\n}\r\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{hostWebhookStellar}}/register?expiryTimeSpan=0:00:30&webhookAddress=https://postman-echo.com/post",
+									"host": [
+										"{{hostWebhookStellar}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "expiryTimeSpan",
+											"value": "0:00:30"
+										},
+										{
+											"key": "webhookAddress",
+											"value": "https://postman-echo.com/post"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 27 Apr 2025 08:47:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "680def05ff3ae265590acf57"
+						}
+					]
+				},
+				{
+					"name": "Unregister account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{apiKeyEvmWebhook}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{hostWebhookStellar}}/unregister?id=680cb58e3c04d6b0d1274bea",
+							"host": [
+								"{{hostWebhookStellar}}"
+							],
+							"path": [
+								"unregister"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "680cb58e3c04d6b0d1274bea"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
