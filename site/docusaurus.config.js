@@ -30,6 +30,7 @@ const config = {
   organizationName: 'Polareum', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   trailingSlash: false, // avoids routing issues. (ChatGPT)
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
