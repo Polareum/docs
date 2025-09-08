@@ -29,6 +29,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Polareum', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
+  trailingSlash: false, // avoids routing issues. (ChatGPT)
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
